@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2020-12-12T07:38:36.886Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" etag="8Z6ti-46SfCtCf2HpcSA" version="13.10.0" type="embed">
+<mxfile host="65bd71144e" modified="2020-12-12T08:01:31.878Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.51.1 Chrome/83.0.4103.122 Electron/9.3.3 Safari/537.36" etag="WePFxKyCdC5HwhvwKbu9" version="13.10.0" type="embed">
     <diagram id="HXXg-mpAm4z_dS3OdFhY" name="ページ1">
         <mxGraphModel dx="856" dy="747" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#F4F1DE" math="0" shadow="0">
             <root>
@@ -185,7 +185,7 @@
                 <mxCell id="108" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="87" vertex="1">
                     <mxGeometry y="230" width="390" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="109" value="shipment_source_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="108" vertex="1">
+                <mxCell id="109" value="prefecture_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="108" vertex="1">
                     <mxGeometry width="130" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="110" value="integer" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="108" vertex="1">
@@ -295,10 +295,10 @@
                 <mxCell id="201" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="196" vertex="1">
                     <mxGeometry y="70" width="360" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="202" value="prefecture" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="201" vertex="1">
+                <mxCell id="202" value="prefecture_id" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="201" vertex="1">
                     <mxGeometry width="100" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="203" value="string" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="201" vertex="1">
+                <mxCell id="203" value="integer" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="201" vertex="1">
                     <mxGeometry x="100" width="80" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="204" value="&lt;meta charset=&quot;utf-8&quot;&gt;&lt;span style=&quot;font-family: helvetica; font-size: 12px; font-style: normal; font-weight: 400; letter-spacing: normal; text-align: center; text-indent: 0px; text-transform: none; word-spacing: 0px; display: inline; float: none;&quot;&gt;null: false&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontColor=#393C56;strokeColor=#E07A5F;labelBackgroundColor=none;" parent="201" vertex="1">
