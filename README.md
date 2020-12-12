@@ -2,16 +2,16 @@
 
 ## users テーブル
 
-| Column           | Type   | Options     |
-| ---------------- | ------ | ----------- |
-| nickname         | string | null: false |
-| email            | string | null: false |
-| password         | string | null: false |
-| first_name       | string | null: false |
-| last_name        | string | null: false |
-| first_name_kana  | string | null: false |
-| last_nama_kana   | string | null: false |
-| birth_data       | data   | null: false |
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| nickname           | string | null: false |
+| email              | string | null: false |
+| encrypted_password | string | null: false |
+| first_name         | string | null: false |
+| last_name          | string | null: false |
+| first_name_kana    | string | null: false |
+| last_nama_kana     | string | null: false |
+| birth_data         | data   | null: false |
 
 ### Association
 
@@ -20,17 +20,17 @@
 
 ## items テーブル
 
-| Column          | Type       | Options                        |
-| --------------- | ---------- | ------------------------------ |
-| name            | string     | null: false                    |
-| text            | text       | null: false                    |
-| category        | string     | null: false                    |
-| state           | string     | null: false                    |
-| delivery_fee    | string     | null: false                    |
-| shipment_source | string     | null: false                    |
-| days_to_ship    | string     | null: false                    |
-| price           | integer    | null: false                    |
-| user            | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| name               | string     | null: false                    |
+| text               | text       | null: false                    |
+| category_id        | string     | null: false                    |
+| state_id           | string     | null: false                    |
+| delivery_fee_id    | string     | null: false                    |
+| shipment_source_id | string     | null: false                    |
+| days_to_ship_id    | string     | null: false                    |
+| price              | integer    | null: false                    |
+| user               | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -60,6 +60,7 @@
 | municipalities | string | null: false                        |
 | address        | string | null: false                        |
 | building_name  | string |                                    |
+| tel            | string | null: false                        |
 | order          | references | null: false, foreign_key: true |
 
 ### Association
