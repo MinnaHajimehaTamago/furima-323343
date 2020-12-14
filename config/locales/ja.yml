@@ -31,6 +31,16 @@ ja:
         first_name_kana: 姓（全角カナ）
         last_name_kana: 名（全角カナ）
         birth_date: 生年月日
+      item:
+        name: 商品名
+        text: 商品の説明
+        price: 販売価格
+        image: 出品画像
+        category_id: カテゴリー
+        state_id: 商品の状態
+        delivery_fee_id: 配送料の負担
+        prefecture_id: 発送元の地域
+        days_to_ship_id: 発送までの日数
     models:
       user: ユーザー
   devise:

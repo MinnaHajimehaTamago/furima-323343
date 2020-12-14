@@ -14,4 +14,6 @@ class User < ApplicationRecord
     validates :last_name_kana, presence: true, format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。' }
     validates :birth_date
   end
+
+  has_many :items
 end
