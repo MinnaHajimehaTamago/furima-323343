@@ -16,11 +16,11 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'first_nameが漢字・ひらがな・カタカナ（全角）であれば登録できること' do
-        @user.first_name = "名前なまえナマエ"
+        @user.first_name = '名前なまえナマエ'
         expect(@user).to be_valid
       end
       it 'last_nameが漢字・ひらがな・カタカナ（全角）であれば登録できること' do
-        @user.last_name = "名前なまえナマエ"
+        @user.last_name = '名前なまえナマエ'
         expect(@user).to be_valid
       end
     end
@@ -47,7 +47,7 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('パスワードを入力してください')
       end
-      
+
       it 'passwordが5字以下であれば登録できないこと' do
         @user.password = '1234a'
         @user.password_confirmation = '1234a'
@@ -77,9 +77,9 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('姓（全角）を入力してください')
       end
-      
+
       it 'first_nameが漢字・ひらがな・カタカナ（全角）以外では登録できないこと' do
-        @user.first_name = "nameﾅﾏｴ"
+        @user.first_name = 'nameﾅﾏｴ'
         @user.valid?
         expect(@user.errors.full_messages).to include('姓（全角）は全角（漢字・ひらがな・カタカナ）で入力してください')
       end
@@ -88,9 +88,9 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('名（全角）を入力してください')
       end
-      
+
       it 'last_nameが漢字・ひらがな・カタカナ（全角）以外では登録できないこと' do
-        @user.last_name = "nameﾅﾏｴ"
+        @user.last_name = 'nameﾅﾏｴ'
         @user.valid?
         expect(@user.errors.full_messages).to include('名（全角）は全角（漢字・ひらがな・カタカナ）で入力してください')
       end
