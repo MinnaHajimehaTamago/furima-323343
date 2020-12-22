@@ -1,15 +1,14 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_params
 
   def index
-    @item = Item.find(params[:item_id])
     judge_seller
     judge_sold
     @order_ship = OrderShip.new
   end
 
   def create
-    @item = Item.find(params[:item_id])
     @order_ship = OrderShip.new(order_params)
     if @order_ship.valid?
       pay_item
@@ -26,6 +25,9 @@ class OrdersController < ApplicationController
     params.require(:order_ship).permit(:postal_code, :prefecture_id, :municipalities, :address, :building_name, :tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
+  def set_params
+    @item = Item.find(params[:item_id])
+  end
 
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
