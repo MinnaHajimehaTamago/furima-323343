@@ -28,6 +28,11 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("郵便番号はハイフンありの7桁で入力してください")
       end
+      it 'prefecture_idが空だと登録できないこと' do
+        @order_ship.prefecture_id = nil
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("都道府県を選択してください")
+      end
       it 'prefecture_idが1だと登録できないこと' do
         @order_ship.prefecture_id = "1"
         @order_ship.valid?
@@ -57,6 +62,21 @@ RSpec.describe OrderShip, type: :model do
         @order_ship.tel = "123456789012"
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("電話番号はハイフンなしで正しく入力してください")
+      end
+      it 'telに-(ハイフン)が含まれていると登録できないこと' do
+        @order_ship.tel = "12-3456-7890"
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("電話番号はハイフンなしで正しく入力してください")
+      end
+      it 'user_idが空だと登録できないこと' do
+        @order_ship.user_id = nil
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Userを入力してください")
+      end
+      it 'item_idが空だと登録できないこと' do
+        @order_ship.item_id = nil
+        @order_ship.valid?
+        expect(@order_ship.errors.full_messages).to include("Itemを入力してください")
       end
       it 'tokenが空だと登録できないこと' do
         @order_ship.token = nil
