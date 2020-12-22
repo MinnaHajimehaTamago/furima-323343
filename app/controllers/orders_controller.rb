@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @item = Item.find(params[:item_id])
+    judge_seller
+    judge_sold
     @order_ship = OrderShip.new
   end
 
@@ -31,4 +35,13 @@ class OrdersController < ApplicationController
       currency: 'jpy'
     )
   end
+
+  def judge_seller
+    redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def judge_sold
+    redirect_to root_path if Order.exists?(item_id: @item.id)
+  end
+
 end
