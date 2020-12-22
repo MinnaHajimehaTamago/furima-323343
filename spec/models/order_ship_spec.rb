@@ -34,7 +34,7 @@ RSpec.describe OrderShip, type: :model do
         expect(@order_ship.errors.full_messages).to include("都道府県を選択してください")
       end
       it 'prefecture_idが1だと登録できないこと' do
-        @order_ship.prefecture_id = "1"
+        @order_ship.prefecture_id = 1
         @order_ship.valid?
         expect(@order_ship.errors.full_messages).to include("都道府県を選択してください")
       end
