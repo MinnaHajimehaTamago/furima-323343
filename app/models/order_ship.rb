@@ -10,6 +10,8 @@ class OrderShip
     validates :municipalities
     validates :address
     validates :tel, format: { with: /\A\d{10,11}\z/, message: 'はハイフンなしで正しく入力してください'}
+    validates :user_id
+    validates :item_id
     validates :token, presence: { message: 'は正しく入力してください' }
   end
 
