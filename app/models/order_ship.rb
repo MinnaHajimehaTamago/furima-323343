@@ -9,7 +9,7 @@ class OrderShip
     validates :prefecture_id, numericality: { other_than: 1, message: 'を選択してください' }
     validates :municipalities
     validates :address
-    validates :tel, format: { with: /\A\d{10,11}\z/, message: 'はハイフンなし入力してください'}
+    validates :tel, format: { with: /\A\d{10,11}\z/, message: 'はハイフンなしで正しく入力してください'}
     validates :token, presence: { message: 'は正しく入力してください' }
   end
 
