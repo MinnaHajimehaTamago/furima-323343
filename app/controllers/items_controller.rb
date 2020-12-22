@@ -23,8 +23,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    judge_sold
-    redirect_to action: :index unless current_user.id == @item.user_id
+    if Order.exists?(item_id: @item.id)
+      redirect_to root_path
+    elsif current_user.id != @item.user_id
+      redirect_to action: :index
+    end
   end
 
   def update
@@ -52,7 +55,4 @@ class ItemsController < ApplicationController
   end
 
 
-  def judge_sold
-    redirect_to root_path if Order.exists?(item_id: @item.id)
-  end
 end
