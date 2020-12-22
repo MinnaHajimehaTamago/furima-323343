@@ -43,6 +43,16 @@ ja:
         days_to_ship_id: 発送までの日数
     models:
       user: ユーザー
+  activemodel:
+    attributes:
+      order_ship:
+        postal_code: 郵便番号
+        prefecture_id: 都道府県
+        municipalities: 市区町村
+        address: 番地
+        building_name: 建物名
+        tel: 電話番号
+        token: クレジットカード情報
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
