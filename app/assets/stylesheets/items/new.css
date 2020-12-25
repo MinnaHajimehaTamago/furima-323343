@@ -89,6 +89,26 @@
   margin-bottom: 15px;
 }
 
+.image-wrapper {
+  height: 200px;
+  width: 100%;
+}
+
+.image-field {
+  height: 200px;
+  width: 200px;
+  border: dotted 2px gray;
+}
+
+.no-border {
+  border: none;
+}
+
+.file-image {
+  height: 200px;
+  width: 200px;
+  object-fit: contain;
+}
 /* /出品画像 */
 
 /* 商品名と商品説明 */
