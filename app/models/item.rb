@@ -7,11 +7,11 @@ class Item < ApplicationRecord
   belongs_to :state
 
   belongs_to :user
-  has_one_attached :image
+  has_many_attached :images
   has_one :order
 
   with_options presence: true do
-    validates :image, presence: { message: 'を選択してください' }
+    validates :images, presence: { message: 'を選択してください' }
     validates :name
     validates :text
   end

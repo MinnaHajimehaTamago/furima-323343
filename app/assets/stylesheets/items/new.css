@@ -94,16 +94,6 @@
   width: 100%;
 }
 
-.image-field {
-  height: 200px;
-  width: 200px;
-  border: dotted 2px gray;
-}
-
-.no-border {
-  border: none;
-}
-
 .file-image {
   height: 200px;
   width: 200px;
