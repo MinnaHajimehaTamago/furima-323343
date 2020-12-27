@@ -3,9 +3,11 @@ class OrdersController < ApplicationController
   before_action :set_params
 
   def index
+    redirect_to new_card_path and return unless current_user.card.present?
     judge_seller
     judge_sold
     @order_ship = OrderShip.new
+    set_card_info
   end
 
   def create
@@ -22,18 +24,26 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_ship).permit(:postal_code, :prefecture_id, :municipalities, :address, :building_name, :tel).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:order_ship).permit(:postal_code, :prefecture_id, :municipalities, :address, :building_name, :tel).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 
   def set_params
     @item = Item.find(params[:item_id])
   end
 
+  def set_card_info
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    card = Card.find_by(user_id: current_user.id)
+    customer = Payjp::Customer.retrieve(card.customer_token)
+    @card = customer.cards.first
+  end
+
   def pay_item
     Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item.price,
-      card: order_params[:token],
+      customer: customer_token,
       currency: 'jpy'
     )
   end
