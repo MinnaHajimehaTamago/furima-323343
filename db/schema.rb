@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_27_060815) do
+ActiveRecord::Schema.define(version: 2020_12_28_092743) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2020_12_27_060815) do
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
-  create_table "item_tag_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "item_tag_releations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "item_id"
     t.bigint "tag_id"
     t.datetime "created_at", precision: 6, null: false
@@ -88,6 +88,15 @@ ActiveRecord::Schema.define(version: 2020_12_27_060815) do
     t.index ["order_id"], name: "index_ships_on_order_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider"
+    t.string "uid"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "tags", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "tag_name", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -114,10 +123,11 @@ ActiveRecord::Schema.define(version: 2020_12_27_060815) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cards", "users"
-  add_foreign_key "item_tag_relations", "items"
-  add_foreign_key "item_tag_relations", "tags"
+  add_foreign_key "item_tag_releations", "items"
+  add_foreign_key "item_tag_releations", "tags"
   add_foreign_key "items", "users"
   add_foreign_key "orders", "items"
   add_foreign_key "orders", "users"
   add_foreign_key "ships", "orders"
+  add_foreign_key "sns_credentials", "users"
 end
