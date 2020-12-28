@@ -1,18 +1,20 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_params, only: [:show, :edit, :update, :destroy]
-
+  before_action :search_item, only: [:category_search_index, :category_search_result]
   def index
     @items = Item.includes(:user).order('created_at DESC')
   end
 
   def new
-    @item = Item.new
+    @item = ItemTag.new
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
+    @item = ItemTag.new(item_params)
+    if @item.valid?
+      binding.pry
+      @item.save
       redirect_to root_path
     else
       render :new
@@ -43,10 +45,24 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
+  def tag_search
+    return nil if params[:keyword] == ""
+    tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
+    render json:{ keyword: tag }
+  end
+
+  def categoty_search_index
+    set_item_column
+  end
+
+  def category_search_result
+    @results = @p.result
+  end
+
   private
 
   def item_params
-    params.require(:item).permit(:name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
+    params.require(:item_tag).permit(:tag_name, :name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
                                  :price, images: []).merge(user_id: current_user.id)
   end
 
@@ -54,5 +70,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  def search_item
+    @p = Item.ransack(params[:q])
+  end
 
+  def set_item_column
+    @item_name = Item.select("name").distinct 
+  end
 end

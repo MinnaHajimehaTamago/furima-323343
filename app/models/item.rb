@@ -9,22 +9,8 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_one :order
+  has_many :item_tag_releations
+  has_many :tags, through: :item_tag_relations
 
-  with_options presence: true do
-    validates :images, presence: { message: 'を選択してください' }
-    validates :name
-    validates :text
-  end
-
-  validates :price,
-            numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'は¥300~9,999,999で入力してください' }
-  validates :price, numericality: { only_integer: true, message: 'は半角数字で入力してください' }
-
-  with_options presence: true, numericality: { other_than: 1, message: 'を選択してください' } do
-    validates :category_id
-    validates :days_to_ship_id
-    validates :delivery_fee_id
-    validates :prefecture_id
-    validates :state_id
-  end
+  
 end

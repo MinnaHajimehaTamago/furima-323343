@@ -109,6 +109,7 @@
 .items-text {
   width: 100%;
   padding: 16px 16px 8px;
+  margin-bottom: 5px;
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -135,6 +136,13 @@
 
 .select-box {
   margin: 2vh 0;
+}
+
+.child{
+  width: 100%;
+  padding: 16px 16px 8px;
+  border-bottom: 1px solid #ccc;
+  font-size: 16px;
 }
 
 /* /商品の詳細など */

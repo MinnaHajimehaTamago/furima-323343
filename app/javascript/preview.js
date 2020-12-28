@@ -12,7 +12,7 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
 
       const inputHTML = document.createElement('input');
       inputHTML.setAttribute('id', `item_image_${imageElementNum}`);
-      inputHTML.setAttribute('name', 'item[images][]');
+      inputHTML.setAttribute('name', 'item_tag[images][]');
       inputHTML.setAttribute('type', 'file');
       blobImage.setAttribute('class', 'file-image');
 
