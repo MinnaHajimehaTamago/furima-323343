@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_params, only: [:show, :edit, :update, :destroy]
   before_action :search_item, only: [:category_search_index, :category_search_result]
   def index
@@ -46,7 +46,11 @@ class ItemsController < ApplicationController
     redirect_to root_path
   end
 
-  def tag_search
+  def search
+    @items = Item.search(params[:keyword])
+  end
+
+  def tag_search 
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
     render json:{ keyword: tag }
