@@ -82,11 +82,6 @@
   <%# /商品の概要 %>
 
   <div class="comment-box">
-    <div id="comments">
-      <% @comments.each do |comment| %>
-        <p><%= comment.text %></p>
-      <% end %>
-    </div>
     <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
       <%= f.text_field :text, class: "comment-text" %>
       <p class="comment-warn">
@@ -96,6 +91,11 @@
       </p>
       <%= f.submit 'コメントする', class: "comment-btn" %>
     <% end %>
+    <div id="comments">
+      <% @comments.reverse_each do |comment| %>
+        <p><%= comment.user.nickname %>: <%= comment.text %></p>
+      <% end %>
+    </div>
   </div>
   <div class="links">
     <a href="#" class="change-item-btn">
