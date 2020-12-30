@@ -10,7 +10,7 @@ class Item < ApplicationRecord
   has_many_attached :images
   has_one :order
   has_many :item_tag_releations
-  has_many :tags, through: :item_tag_relations
+  has_many :tags, through: :item_tag_releations
   has_many :comments
   
   def self.search(search)

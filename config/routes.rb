@@ -9,9 +9,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
     collection do
       get 'search'
-      get 'tag_search'
+      get 'tag_suggestion'
       get 'category_search_index'
       get 'category_search_result'
+      get 'tag_search_index'
+      get 'tag_search_result'
     end
   end
   resources :users, only: [:show, :update]

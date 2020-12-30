@@ -1,0 +1,16 @@
+<%= render 'shared/header' %>
+<h1>
+  商品検索
+</h1>
+<%= search_form_for @p, url: tag_search_result_items_path do |f| %>
+  <%= f.label :tags_id_in, '商品タグ' %>
+  <%= f.collection_select :tags_id_in, @tags, :id, :tag_name, include_blank: '指定なし' %>
+  <br>
+  <%= f.submit '検索' %>
+<% end %>
+<% @items.each do |item| %>
+  <%= item.name %>
+  <%= item.tags.map{|tag| tag[:tag_name ]}.join(', ') %>
+  <br>
+<% end %>
+<%= render 'shared/footer' %>

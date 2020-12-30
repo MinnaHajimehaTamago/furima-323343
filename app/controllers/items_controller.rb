@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show, :search]
   before_action :set_params, only: [:show, :edit, :update, :destroy]
-  before_action :search_item, only: [:category_search_index, :category_search_result]
+  before_action :search_item, only: [:category_search_index, :category_search_result, :tag_search_index, :tag_search_result]
+
   def index
     @items = Item.includes(:user).order('created_at DESC')
+    @tags = ItemTagReleation.all
   end
 
   def new
@@ -50,18 +52,29 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword])
   end
 
-  def tag_search 
+  def tag_suggestion
     return nil if params[:keyword] == ""
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
     render json:{ keyword: tag }
   end
 
-  def categoty_search_index
+  def category_search_index
     set_item_column
   end
 
   def category_search_result
     @results = @p.result
+  end
+
+  def tag_search_index
+    @tags = Tag.all.sort do |a, b|
+      a[:tag_name] <=> b[:tag_name]
+    end
+    @items = @p.result.includes(:user, :tags)
+  end
+
+  def tag_search_result
+    @results = @p.result.includes(:user, :tags)
   end
 
   private
@@ -82,4 +95,5 @@ class ItemsController < ApplicationController
   def set_item_column
     @item_name = Item.select("name").distinct 
   end
+
 end
