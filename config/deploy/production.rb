@@ -61,4 +61,3 @@
 #   }
 
 server '54.150.106.129', user: 'ec2-user', roles: %w{app db web}
-set :ssh_options, keys: '~/.ssh/furima323343.pem'
