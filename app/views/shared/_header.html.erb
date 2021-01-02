@@ -12,11 +12,11 @@
   <div class='nav'>
     <ul class='lists-left'>
       <li><%= link_to 'カテゴリー検索', category_search_index_items_path, class: "category-list" %></li>
-      <li><%= link_to 'タグ検索', tag_search_index_items_path, class: "brand-list" %></li>
+      <li><%= link_to 'タグ検索', tag_search_index_items_path, class: "tag-list" %></li>
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to current_user.nickname, user_path(current_user.id), class: "user-nickname" %></li>
+        <li><%= link_to "#{current_user.nickname}さん", user_path(current_user.id), class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else%>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>

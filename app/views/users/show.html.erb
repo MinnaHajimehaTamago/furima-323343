@@ -72,28 +72,21 @@
   <div class='register-btn'>
     <%= f.submit "更新する" ,class:"register-red-btn" %>
   </div>
-  
-  <div class="Card__title">
-    <h2>カード情報</h2>
-  </div>
-  <div class="Card_info">
-    【カード番号】
-    <br>
-    <%= "**** **** **** " + @card[:last4] %>
-    <%# カード番号の下4桁を取得 %>
-
-    <br>
-    【有効期限】
-    <br>
-    <%= @card[:exp_month] %>
-    <%# 有効期限の「月」を取得 %>
-    /
-    <%= @card[:exp_year] %>
-    <%# 有効期限の「年」を取得 %>
-  </div>
-
-  <div class="card-info-btn">
-    <%= link_to 'カード情報登録', new_card_path, class: 'register-card-info' %>
+  <div class="card-group">
+    <div class="Card__title">
+      <h2>登録カード情報</h2>
+    </div>
+    <% if Card.find_by(user_id: current_user.id).present? %>
+      <div class="Card_info">
+        カード番号: <%= "**** **** **** " + @card[:last4] %>
+        <br>
+        有効期限: <%= @card[:exp_month] %> / <%= @card[:exp_year] %>
+      </div>
+    <% else %>
+      <div class="card-info-btn">
+        <%= link_to 'カード情報登録', new_card_path, class: 'register-card-info' %>
+      </div>
+    <% end %>
   </div>
 </div>
 <% end %>

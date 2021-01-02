@@ -1,11 +1,18 @@
-<%= render 'shared/header' %>
-<h1>
-  商品検索
-</h1>
-<%= search_form_for @p, url: category_search_result_items_path do |f| %>
-  <%= f.label :category_id_eq, '商品カテゴリー' %>
-  <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
-  <br>
-  <%= f.submit '検索' %>
-<% end %>
-<%= render 'shared/footer' %>
+<%= render 'shared/second-header' %>
+<div class="search-main">
+  <div class="form-wrap">
+    <div class="form-group">
+      <h1>
+        商品検索
+      </h1>
+      <%= search_form_for @p, url: category_search_result_items_path do |f| %>
+        <div class="search-title">
+          <%= f.label :category_id_eq, '商品カテゴリー' %>
+        </div>
+        <%= f.collection_select :category_id_eq, Category.all, :id, :name, include_blank: '指定なし' %>
+        <%= f.submit '検索', class: "search-btn" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<%= render 'shared/second-footer' %>

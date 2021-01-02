@@ -1,12 +1,16 @@
 <%= render 'shared/header' %>
-<p>検索結果</p>
-<% if @results.length !=0 %>
-  <ul class='item-lists'>
-    <% @results.each do |item| %>
-      <%= render partial: 'shared/item', locals: { item: item } %>
-    <% end %>
-  </ul>
-<% else %>
-  該当する商品はありません
-<% end %>
+<div class="result-title">
+  <h1>検索結果</h1>
+</div>
+<div class="result-main">
+  <% if @results.length !=0 %>
+    <ul class='item-lists'>
+      <% @results.each do |item| %>
+        <%= render partial: 'shared/item', locals: { item: item } %>
+      <% end %>
+    </ul>
+  <% else %>
+    該当する商品はありません
+  <% end %>
+</div>
 <%= render 'shared/footer' %>

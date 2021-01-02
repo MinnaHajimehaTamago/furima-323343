@@ -22,19 +22,20 @@
 .item-box>.name {
   text-align: center;
   font-weight: bold;
-  font-size: 25px;
+  font-size: 30px;
 }
 
 .item-img-content {
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .item-box-img {
-  height: 50vh;
-  width: 45%;
-  margin: 0 5px;
-  min-height: 500px;
+  height: 30%;
+  width: 30%;
+  margin:0 5px;
+  min-height: 30%;
   background-color: rgb(205, 202, 202);
   object-fit: contain;
 }
@@ -43,45 +44,65 @@
   margin: 25px 0px;
   display: flex;
   align-items: center;
-  flex-direction: column;
 }
 
 .item-price-box>.item-price {
   font-size: 4vh;
   font-weight: bold;
+  color: red;
+  margin-right: 5px;
 }
 
 .item-price-box>.item-postage {
-  font-size: 16px;
+  font-size: 14px;
+  padding-top: 7px;
+  color: gray;
 }
 
 
+.item-btn-list {
+  display: flex;
+  justify-content: center;
+}
+
 .item-red-btn {
+  width: 30vw;
   text-align: center;
   background-color: #ea352d;
   font-size: 24px;
   font-weight: bold;
+  border-radius: 10px;
   color: #FFF;
-  margin: 20px 0px;
-  padding: 2vh 10vw;
-}
-
-.or-text {
-  font-size: 20px;
+  margin: 20px 10px 20px;
+  padding: 2vh 0;
 }
 
 .item-destroy {
+  width: 30vw;
   background-color: lightgray;
   text-align: center;
   font-size: 24px;
+  border-radius: 10px;
   color: black;
   margin: 20px 0px;
   padding: 2vh 10vw;
 }
 
 .item-explain-box {
+  width: 100%;
   font-size: 18px;
-  margin: 40px 0px;
+  margin: 20px 0px;
+}
+
+.item-explain-title {
+  color: gray;
+  text-align: center;
+}
+
+.item-explain-text {
+  border: 1px solid #dedede;
+  min-height: 20vh;
+  padding: 5px;
 }
 
 .detail-table {
@@ -94,6 +115,7 @@
   background-color: #eee;
   border: 1px solid #dedede;
   font-size: 14px;
+  color: gray;
   text-align: center;
 }
 

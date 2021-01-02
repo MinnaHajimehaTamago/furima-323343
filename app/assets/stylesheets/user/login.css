@@ -18,3 +18,13 @@
   text-align: center;
   color: red;
 }
+
+.sns-logins {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.sns-login a{
+  color: #0099e8;
+}

@@ -3,42 +3,34 @@
 <%# 商品の概要 %>
 <div class="item-show">
   <div class="item-box">
-    <h2 class="name">
-      <%= @item.name %>
-    </h2>
     <div class='item-img-content'>
       <% @item.images.each do |image| %>
         <%= image_tag image,class:"item-box-img" %>
       <% end %>
-
       <% if Order.exists?(item_id: @item.id) %>
         <div class='sold-out'>
           <span>Sold Out!!</span>
         </div>
       <% end %>
-
     </div>
+    <h2 class="name">
+      <%= @item.name %>
+    </h2>
     <div class="item-price-box">
-      <span class="item-price">
+      <div class="item-price">
         ¥ <%= @item.price %>
-      </span>
-      <span class="item-postage">
+      </div>
+      <div class="item-postage">
         <%= DeliveryFee.data[@item.delivery_fee_id-1][:name] %>
-      </span>
+      </div>
     </div>
-    <% if user_signed_in? %>
-      <% unless Order.exists?(item_id: @item.id) %>
-        <% if current_user.id == @item.user.id %>
-          <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
-          <p class='or-text'>or</p>
-          <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
-        <% else %>
-          <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn" %>
-        <% end %>
-      <% end %>
-    <% end %>
     <div class="item-explain-box">
-      <span><%= @item.text %></span>
+      <div class="item-explain-title">
+        <h1>商品説明</h1>
+      </div>
+      <div class="item-explain-text">
+        <span><%= @item.text %></span>
+      </div>
     </div>
     <table class="detail-table">
       <tbody>
@@ -68,16 +60,28 @@
         </tr>
       </tbody>
     </table>
-    <div class="option">
-      <div class="favorite-btn">
-        <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%>
-        <span>お気に入り 0</span>
-      </div>
-      <div class="report-btn">
-        <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
-        <span>不適切な商品の通報</span>
-      </div>
-    </div>
+    <% if user_signed_in? %>
+      <% unless Order.exists?(item_id: @item.id) %>
+        <% if current_user.id == @item.user.id %>
+          <div class="item-btn-list">
+            <%= link_to '商品の編集', edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+            <%= link_to '削除', "/items/#{@item.id}", method: :delete, class:'item-destroy' %>
+          </div>
+        <% else %>
+          <%= link_to '購入画面に進む', item_orders_path(@item.id) ,class:"item-red-btn" %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <%# <div class="option"> %>
+      <%# <div class="favorite-btn"> %>
+        <%# <%= image_tag "star.png" ,class:"favorite-star-icon" ,width:"20",height:"20"%> 
+        <%# <span>お気に入り 0</span> %>
+      <%# </div> %>
+      <%# <div class="report-btn"> %>
+        <%# <%= image_tag "flag.png" ,class:"report-flag-icon" ,width:"20",height:"20"%>
+        <%# <span>不適切な商品の通報</span> %>
+      <%# </div> %>
+    <%# </div> %>
   </div>
   <%# /商品の概要 %>
 
@@ -97,15 +101,6 @@
       <% end %>
     </div>
   </div>
-  <div class="links">
-    <a href="#" class="change-item-btn">
-      ＜ 前の商品
-    </a>
-    <a href="#" class="change-item-btn">
-      後ろの商品 ＞
-    </a>
-  </div>
-  <a href=“#” class=‘another-item’><%= Category.data[(@item.category_id-1)][:name] %>をもっと見る</a>
 </div>
 
 <%= render "shared/footer" %>
