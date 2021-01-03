@@ -41,6 +41,8 @@ ja:
         delivery_fee_id: 配送料の負担
         prefecture_id: 発送元の地域
         days_to_ship_id: 発送までの日数
+      card:
+        card_token: カード情報
     models:
       user: ユーザー
   activemodel:
