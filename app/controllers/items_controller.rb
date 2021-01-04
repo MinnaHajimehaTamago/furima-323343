@@ -53,9 +53,10 @@ class ItemsController < ApplicationController
   end
 
   def tag_suggestion
-    return nil if params[:keyword] == ""
+    return nil if params[:keyword] == ''
+
     tag = Tag.where(['tag_name LIKE ?', "%#{params[:keyword]}%"])
-    render json:{ keyword: tag }
+    render json: { keyword: tag }
   end
 
   def category_search_index
@@ -81,7 +82,7 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item_tag).permit(:tag_name, :name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
-                                 :price, images: []).merge(user_id: current_user.id)
+                                     :price, images: []).merge(user_id: current_user.id)
   end
 
   def set_params
@@ -93,7 +94,6 @@ class ItemsController < ApplicationController
   end
 
   def set_item_column
-    @item_name = Item.select("name").distinct 
+    @item_name = Item.select('name').distinct
   end
-
 end

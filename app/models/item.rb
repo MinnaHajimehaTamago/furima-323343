@@ -12,9 +12,9 @@ class Item < ApplicationRecord
   has_many :item_tag_releations
   has_many :tags, through: :item_tag_releations
   has_many :comments
-  
+
   def self.search(search)
-    if search != ""
+    if search != ''
       Item.where('name LIKE(?)', "%#{search}%")
     else
       Item.includes(:user).order('created_at DESC')

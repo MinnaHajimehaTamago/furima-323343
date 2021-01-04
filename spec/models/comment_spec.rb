@@ -14,14 +14,14 @@ RSpec.describe Comment, type: :model do
 
     context 'コメント情報が登録できない時' do
       it 'textが空では登録できないこと' do
-        @comment.text = ""
+        @comment.text = ''
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("Textを入力してください")
+        expect(@comment.errors.full_messages).to include('Textを入力してください')
       end
       it 'user情報が紐づいていないと登録できないこと' do
         @comment.user = nil
         @comment.valid?
-        expect(@comment.errors.full_messages).to include("Userを入力してください")
+        expect(@comment.errors.full_messages).to include('Userを入力してください')
       end
     end
   end

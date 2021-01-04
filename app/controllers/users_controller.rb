@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def show
     if Card.find_by(user_id: current_user.id).present?
       @user = User.find(params[:id])
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = ENV['PAYJP_SECRET_KEY']
       card = Card.find_by(user_id: current_user.id)
 
       customer = Payjp::Customer.retrieve(card.customer_token)
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, :email, :password, :password_confirmation)
+    params.require(:user).permit(:nickname, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth_date, :email,
+                                 :password, :password_confirmation)
   end
 end

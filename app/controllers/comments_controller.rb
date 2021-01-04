@@ -1,9 +1,7 @@
 class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
-    if @comment.save
-      ActionCable.server.broadcast 'comment_channel', content: channel_params
-    end
+    ActionCable.server.broadcast 'comment_channel', content: channel_params if @comment.save
   end
 
   private

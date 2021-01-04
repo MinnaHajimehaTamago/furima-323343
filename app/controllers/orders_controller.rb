@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
   def index
     redirect_to new_card_path and return unless current_user.card.present?
+
     judge_seller
     judge_sold
     @order_ship = OrderShip.new
@@ -24,7 +25,9 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order_ship).permit(:postal_code, :prefecture_id, :municipalities, :address, :building_name, :tel).merge(user_id: current_user.id, item_id: params[:item_id])
+    params.require(:order_ship).permit(:postal_code, :prefecture_id, :municipalities, :address, :building_name, :tel).merge(
+      user_id: current_user.id, item_id: params[:item_id]
+    )
   end
 
   def set_params
@@ -32,14 +35,14 @@ class OrdersController < ApplicationController
   end
 
   def set_card_info
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     card = Card.find_by(user_id: current_user.id)
     customer = Payjp::Customer.retrieve(card.customer_token)
     @card = customer.cards.first
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     customer_token = current_user.card.customer_token
     Payjp::Charge.create(
       amount: @item.price,
@@ -55,5 +58,4 @@ class OrdersController < ApplicationController
   def judge_sold
     redirect_to root_path if Order.exists?(item_id: @item.id)
   end
-
 end
