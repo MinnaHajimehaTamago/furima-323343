@@ -13,7 +13,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = ItemTag.new(item_params)
+    @item = ItemTag.new(item_tag_params)
     if @item.valid?
       @item.save
       redirect_to root_path
@@ -81,12 +81,18 @@ class ItemsController < ApplicationController
   private
 
   def item_params
+    params.require(:item).permit(:name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
+                                 :price, images: []).merge(user_id: current_user.id)
+  end
+
+  def item_tag_params
     params.require(:item_tag).permit(:tag_name, :name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
                                      :price, images: []).merge(user_id: current_user.id)
   end
 
   def set_params
     @item = Item.find(params[:id])
+    @tag = ItemTagReleation.find_by(item_id: params[:id]).tag
   end
 
   def search_item
