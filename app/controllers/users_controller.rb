@@ -2,9 +2,8 @@ class UsersController < ApplicationController
   def show
     if Card.find_by(user_id: current_user.id).present?
       @user = User.find(params[:id])
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+      Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
       card = Card.find_by(user_id: current_user.id)
-
       customer = Payjp::Customer.retrieve(card.customer_token)
       @card = customer.cards.first
     end
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       redirect_to root_path
     else
-      render user_path(current_user.id, @card)
+      redirect_to action: :show
     end
   end
 
