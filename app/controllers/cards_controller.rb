@@ -4,7 +4,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    Payjp.api_key = Rails.application.credentials.payjp[:PAYJP_SECRET_KEY]
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     customer = Payjp::Customer.create(
       description: 'test',
       card: params[:card_token]
@@ -18,7 +18,7 @@ class CardsController < ApplicationController
       @card.save
       redirect_to root_path
     else
-      redirect_to action: :new
+      render action: :new
     end
   end
 end
