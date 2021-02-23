@@ -187,7 +187,21 @@
 
 .Card_info {
   text-align: center;
+}
 
+.Card_edit {
+  width: 100%;
+}
+
+.Card-edit-btn {
+  line-height: 30px;
+  width: 80px;
+  text-align: center;
+  background-color: #0099e8;
+  font-size: 14px;
+  color: #fff;
+  margin: 10px auto 0;
+  display: block;
 }
 
 .card-info-btn {

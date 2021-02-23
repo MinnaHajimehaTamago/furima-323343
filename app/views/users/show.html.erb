@@ -83,6 +83,9 @@
         <br>
         有効期限: <%= @card[:exp_month] %> / <%= @card[:exp_year] %>
       </div>
+      <div class="Card_edit">
+        <%= link_to '取り消す', card_path(@card.id), method: :delete, class:"Card-edit-btn" %>
+      </div>
     <% else %>
       <div class="card-info-btn">
         <%= link_to 'カード情報登録', new_card_path, class: 'register-card-info' %>
