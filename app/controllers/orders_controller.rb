@@ -18,6 +18,7 @@ class OrdersController < ApplicationController
       @order_ship.save
       redirect_to root_path
     else
+      set_card_info
       render :index
     end
   end
