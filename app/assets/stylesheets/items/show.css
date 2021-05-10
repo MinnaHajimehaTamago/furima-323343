@@ -177,8 +177,8 @@
 
 .comment-text {
   width: 100%;
-  height: 100px;
-  padding: 10px;
+  height: 40px;
+  padding: 5px;
   border: solid 2px #dedede;
   resize: none;
 }
@@ -186,20 +186,21 @@
 .comment-warn {
   padding: 10px;
   font-size: 14px;
-  margin: 10px 0px;
-  text-align: left;
+  text-align: center;
+  color: gray;
+  margin-bottom: 10px;
 }
 
 .comment-btn {
-  line-height: 48px;
+  line-height: 25px;
   background-color: #3CCACE;
   border: 1px solid #3CCACE;
   color: #fff;
   width: 50%;
   min-width: 150px;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 100px;
-  margin-bottom: 2vh;
+  margin: 10px 0;
 }
 
 .comment-flag {
@@ -236,4 +237,26 @@
 .tag-name {
   font-size: 24px;
   color: rgb(29, 132, 201);
+}
+
+#comments {
+  border-top: 1px solid #dedede;
+}
+
+.comment {
+  display: flex;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dedede;
+}
+
+.comment-left {
+  width: 20%;
+  text-align: left;
+  overflow: none;
+}
+
+.comment-right {
+  width: 80%;
+  text-align: left;
+  padding-left: 5px;
 }

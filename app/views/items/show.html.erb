@@ -75,24 +75,32 @@
         <% end %>
       <% end %>
     <% end %>
-  </div>
-
-  <div class="comment-box">
+    <div class="comment-box">
     <%= form_with model: @comment, url: item_comments_path(@item.id) do |f| %>
-      <%= f.text_field :text, class: "comment-text" %>
+      <%= f.text_field :text, placeholder: "コメントを入力してください。",class: "comment-text" %>
+      <%= f.submit 'コメントする', class: "comment-btn" %>
       <p class="comment-warn">
       相手のことを考え丁寧なコメントを心がけましょう。
       <br>
       不快な言葉遣いなどは利用制限や退会処分となることがあります。
       </p>
-      <%= f.submit 'コメントする', class: "comment-btn" %>
     <% end %>
     <div id="comments">
       <% @comments.reverse_each do |comment| %>
-        <p><%= comment.user.nickname %>: <%= comment.text %></p>
+        <div class="comment">
+          <div class="comment-left">
+            <p><%= comment.user.nickname %>:</p>
+          </div>
+          <div class="comment-right">
+            <p><%= comment.text %></p>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
+  </div>
+
+  
 </div>
 
 <%= render "shared/footer" %>

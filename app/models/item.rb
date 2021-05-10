@@ -9,9 +9,9 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many_attached :images
   has_one :order
-  has_many :item_tag_releations
+  has_many :item_tag_releations, dependent: :destroy
   has_many :tags, through: :item_tag_releations
-  has_many :comments
+  has_many :comments,dependent: :destroy
 
   def self.search(search)
     if search != ''
