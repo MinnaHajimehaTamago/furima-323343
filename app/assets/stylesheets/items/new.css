@@ -108,8 +108,8 @@
 
 .items-text {
   width: 100%;
-  padding: 16px 16px 8px;
-  margin-bottom: 5px;
+  padding: 16px;
+  margin-bottom: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
   font-size: 16px;
@@ -248,4 +248,42 @@
 
 .inc {
   font-size: 13px;
+}
+
+#tag_add_btn {
+  padding: 3px 5px;
+  border-radius: 10px;
+  border: 1px solid gray;
+  font-size: 12px;
+  display: inline;
+  cursor: pointer;
+}
+
+#tag_add_btn:hover {
+  background-color: lightgray;
+}
+
+.tag-element {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  padding: 16px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.hide {
+  display: none;
+}
+
+.tag-delete-btn {
+  margin-left: 5px;
+}
+
+.tag-delete-btn:hover {
+  background-color: lightgray;
+  border-radius: 10px;
 }

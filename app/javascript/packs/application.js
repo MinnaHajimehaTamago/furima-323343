@@ -6,10 +6,12 @@
 require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
+require("jquery")
 require("../item_price")
 require("../card")
 require("../preview")
-require("../tag")
+// require("../tag")
+require("../tag_input")
 
 
 

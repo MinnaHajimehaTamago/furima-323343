@@ -86,13 +86,12 @@ class ItemsController < ApplicationController
   end
 
   def item_tag_params
-    params.require(:item_tag).permit(:tag_name, :name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
-                                     :price, images: []).merge(user_id: current_user.id)
+    params.require(:item_tag).permit(:name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id,
+                                     :price, :tag_name, images: [], tag_names: []).merge(user_id: current_user.id)
   end
 
   def set_params
     @item = Item.find(params[:id])
-    @tag = ItemTagReleation.find_by(item_id: params[:id]).tag
   end
 
   def search_item

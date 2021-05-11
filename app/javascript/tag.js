@@ -21,7 +21,7 @@ if (location.pathname.match("items/new")){
             const clickElement = document.getElementById(tag.id);
             clickElement.addEventListener("click", () => {
               document.getElementById("item-tag").value = clickElement.textContent;
-              clickElement.remove();
+              searchResult.removeChild();
             });
           });
         };

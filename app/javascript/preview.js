@@ -23,7 +23,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
       inputHTML.addEventListener('change', (e) => {
         file = e.target.files[0];
         blob = window.URL.createObjectURL(file);
-
         createImageHTML(blob);
       });
     };
@@ -31,7 +30,6 @@ if (document.URL.match( /new/ ) || document.URL.match( /edit/ )) {
     document.getElementById('item-image').addEventListener('change', function(e){
       const file = e.target.files[0];
       const blob = window.URL.createObjectURL(file);
-
       createImageHTML(blob);
     });
   });

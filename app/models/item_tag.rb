@@ -1,7 +1,7 @@
 class ItemTag
   include ActiveModel::Model
   attr_accessor :name, :text, :category_id, :state_id, :delivery_fee_id, :prefecture_id, :days_to_ship_id, :price, :user_id,
-                :images, :tag_name
+                :images, :tag_names, :tag_name
 
   with_options presence: true do
     validates :images, presence: { message: 'を選択してください' }
@@ -24,6 +24,11 @@ class ItemTag
   def save
     item = Item.create(name: name, text: text, category_id: category_id, state_id: state_id, delivery_fee_id: delivery_fee_id,
                        prefecture_id: prefecture_id, days_to_ship_id: days_to_ship_id, price: price, user_id: user_id, images: images)
+    tag_names.uniq.each do |name|
+      tag = Tag.where(tag_name: name).first_or_initialize
+      tag.save
+      ItemTagReleation.create(item_id: item.id, tag_id: tag.id)
+    end
     tag = Tag.where(tag_name: tag_name).first_or_initialize
     tag.save
     ItemTagReleation.create(item_id: item.id, tag_id: tag.id)
