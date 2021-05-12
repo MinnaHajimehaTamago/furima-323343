@@ -29,8 +29,10 @@ class ItemTag
       tag.save
       ItemTagReleation.create(item_id: item.id, tag_id: tag.id)
     end
-    tag = Tag.where(tag_name: tag_name).first_or_initialize
-    tag.save
-    ItemTagReleation.create(item_id: item.id, tag_id: tag.id)
+    unless tag_name == ''
+      tag = Tag.where(tag_name: tag_name).first_or_initialize
+      tag.save
+      ItemTagReleation.create(item_id: item.id, tag_id: tag.id)
+    end
   end
 end
