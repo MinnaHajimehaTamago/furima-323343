@@ -42,7 +42,6 @@
 
 .weight-bold-text {
   font-weight: bold;
-  min-width: 170px;
   margin-bottom: 10px;
 }
 
@@ -74,10 +73,11 @@
 
 /* 出品画像 */
 .img-upload {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
   padding: 2vh 0;
+}
+.image-file {
+  display: block;
+  margin-top: 10px;
 }
 
 .click-upload {
