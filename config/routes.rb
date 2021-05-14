@@ -16,6 +16,11 @@ Rails.application.routes.draw do
       get 'tag_search_result'
     end
   end
-  resources :users, only: [:show, :update]
+  resources :users, only: [:show, :update] do
+    collection do
+      get 'buyer_sign_in'
+      get 'seller_sign_in'
+    end
+  end
   resources :cards, only: [:new, :create, :edit, :update, :destroy]
 end

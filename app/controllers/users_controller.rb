@@ -16,6 +16,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def buyer_sign_in
+    user = User.find_by(email: 'buyer@example.com')
+    sign_in user
+    redirect_to root_path
+  end
+
+  def seller_sign_in
+    user = User.find_by(email: 'seller@example.com')
+    sign_in user
+    redirect_to root_path
+  end
+
   private
 
   def user_params

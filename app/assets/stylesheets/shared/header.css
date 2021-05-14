@@ -119,6 +119,14 @@
   color: #333333;
 }
 
+.guest {
+  border: 1px dashed gray;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
 .login:hover {
   color:  #3ccace;
 }
